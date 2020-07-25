@@ -36,7 +36,8 @@ def collect_cards_from_hearthpwn():
             gold_img_url = img['data-animationurl']
             card_type = row.find('ul').find('li').find('a').string
 
-            # print(card_type)
+            print(name, card_type)
+
             card = CardModel(
                 card_id=card_id,
                 name=name,
@@ -46,7 +47,7 @@ def collect_cards_from_hearthpwn():
                 normal_dataset=False, 
                 golden_dataset=False,
             )
-            card.save()
+            # card.save()
 
         next = page.find('a', rel='next')
         if next:
