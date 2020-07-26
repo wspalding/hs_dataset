@@ -47,7 +47,7 @@ def collect_cards_from_hearthpwn():
                 normal_dataset=False, 
                 golden_dataset=False,
             )
-            # card.save()
+            card.save()
 
         next = page.find('a', rel='next')
         if next:
