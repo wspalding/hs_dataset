@@ -52,3 +52,7 @@ def collect_cards_from_hearthpwn():
         next = page.find('a', rel='next')
         if next:
             browser.follow_link(next)
+
+
+def download_collected_normal_cards():
+    pass

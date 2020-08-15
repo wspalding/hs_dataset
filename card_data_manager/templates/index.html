@@ -1,2 +1,30 @@
 <h1>Control Center</h1>
 <a href="/collect_new_cards">collect new cards</a>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Card Type
+            </td>
+        </tr>
+        {% for c in cards %}
+        <tr>
+            <td>
+                {{c.card_id}}
+            </td>
+            <td>
+                {{c.name}}
+            </td>
+            <td>
+                {{c.card_type}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
