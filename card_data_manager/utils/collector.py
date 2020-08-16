@@ -1,8 +1,10 @@
-from card_data_manager.models import CardModel
+from card_data_manager.utils.card_repo import HSCardRepo
 import re
 import mechanicalsoup
 import requests
 import shutil
+
+repo = HSCardRepo()
 
 def collect_cards_from_hearthpwn():
     browser = mechanicalsoup.StatefulBrowser()
@@ -28,7 +30,7 @@ def collect_cards_from_hearthpwn():
             # print(name)
 
             card_id = int(re.findall(r'\d+', h3.find('a')['href'])[0])
-            if CardModel.objects.filter(card_id=card_id).exists():
+            if repo.Search(card_id=card_id).exists():
                 continue
 
             name = h3.string
@@ -38,16 +40,25 @@ def collect_cards_from_hearthpwn():
 
             print(name, card_type)
 
-            card = CardModel(
+            # card = CardModel(
+            #     card_id=card_id,
+            #     name=name,
+            #     card_type=card_type,
+            #     normal_url=img_url,
+            #     golden_url=gold_img_url,
+            #     normal_dataset=False, 
+            #     golden_dataset=False,
+            # )
+            # card.save()
+            repo.Create(
                 card_id=card_id,
                 name=name,
                 card_type=card_type,
                 normal_url=img_url,
                 golden_url=gold_img_url,
                 normal_dataset=False, 
-                golden_dataset=False,
-            )
-            card.save()
+                golden_dataset=False
+                )
 
         next = page.find('a', rel='next')
         if next:
@@ -55,4 +66,7 @@ def collect_cards_from_hearthpwn():
 
 
 def download_collected_normal_cards():
+    cards = CardModel.objects.all()
+    for c in cards:
+        print(c.normal_url)
     pass

@@ -1,16 +1,23 @@
+<style>
+    table, tr, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
 <h1>Control Center</h1>
 <a href="/collect_new_cards">collect new cards</a>
 <table>
     <tbody>
         <tr>
             <td>
-                ID
+                <b>ID</b>
             </td>
             <td>
-                Name
+                <b>Name</b>
             </td>
             <td>
-                Card Type
+                <b>Type</b>
             </td>
         </tr>
         {% for c in cards %}
