@@ -1,0 +1,43 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'control_center/index.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.css' %}">
+
+<body>
+    <div class="col">
+        <h1>Control Center</h1>
+        <div class="row">
+            <a href="/collect_new_cards">collect new cards</a>
+            <a href="/download_collected_cards">download collected cards</a>
+        </div>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td> 
+                        <b>ID</b>
+                    </td>
+                    <td>
+                        <b>Name</b>
+                    </td>
+                    <td>
+                        <b>Type</b>
+                    </td>
+                </tr>
+                {% for c in cards %}
+                <tr>
+                    <td>
+                        {{c.card_id}}
+                    </td>
+                    <td>
+                        {{c.name}}
+                    </td>
+                    <td>
+                        {{c.card_type}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
