@@ -1,0 +1,49 @@
+{% load static %}
+
+<div class="">
+  <p>
+    image numer {{ img_num }}
+  </p>
+</div>
+<div class="">
+  <table style="width:100%;">
+    <tr>
+      <th>#</th>
+      <th>Input Image</th>
+      <th>Class</th>
+      <th>Descriminator Prediction</th>
+      <th>Label</th>
+    </tr>
+    {% for d in display_images %}
+    <tr>
+      <th>
+        <p>
+          {{d.number}}
+        </p>
+      </th>
+      <th>
+        {% if d.normal_img %}
+        <img src="{% static d.normal_img %}" alt="">
+        {% else %}
+        {{ d.x_tensor }}
+        {% endif %}
+      </th>
+      <th>
+        {{ d.class }}
+      </th>
+      <th>
+        {% if d.model_pred is not None %}
+        {{ d.model_pred }}
+        {% endif %}
+      </th>
+      <th>
+        {% if d.golden_img %}
+        <img src="{% static d.golden_img %}" alt="">
+        {% else %}
+        {{ d.y_tensor }}
+        {% endif %}
+      </th>
+    </tr>
+    {% endfor %}
+  </table>
+</div>

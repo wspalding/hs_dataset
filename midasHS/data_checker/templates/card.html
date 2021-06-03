@@ -1,0 +1,43 @@
+{% load static %}
+
+<table>
+  <tr>
+    <th>normal</th>
+    <th>golden</th>
+  </tr>
+  <tr>
+    <th>
+      {% if normal_type == 'path' %}
+      <img src="{% static normal %}" alt="">
+      {% else %}
+      <img src="{{normal}}" alt="">
+      {% endif %}
+    </th>
+    <th>
+      {% if golden_type == 'path' %}
+      <img src="{% static golden %}" alt="">
+      {% else %}
+      <video controls="" autoplay="" loop="" name="media">
+        <source src={{golden}} type="video/webm">
+      </video>
+      {% endif %}
+    </th>
+  </tr>
+  <tr>
+    <th>
+      {{normal_status}}
+    </th>
+    <th>
+      {{golden_status}}
+    </th>
+  </tr>
+</table>
+
+
+
+<!-- 
+<form class="" action="{% url 'card' index %}" method="post">
+  {% csrf_token %}
+  <input type="submit" name="Skip" value="Skip">
+  <input type="submit" name="Keep" value="Keep">
+</form> -->

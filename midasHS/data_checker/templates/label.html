@@ -1,0 +1,40 @@
+{% load static %}
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>{{title}}</th>
+    <th>in {{title}} dataset</th>
+    <th>card type</th>
+    <th>Status</th>
+  </tr>
+  <form class="" action="" method="post">
+    {% csrf_token %}
+    {% for id, img_src, type, card_type, status in cards %}
+    <tr>
+      <th>{{id}}</th>
+      <th>
+        {% if type == 'path' %}
+        <img src="{% static img_src %}" alt="">
+        {% elif type == 'url_img' %}
+        <img src="{{img_src}}" alt="">
+        {% else %}
+        <video controls="" autoplay="" loop="" name="media">
+          <source src={{img_src}} type="video/webm">
+        </video>
+        {% endif %}
+      </th>
+      <th>
+        <input type="checkbox" name="{{id}}" checked>
+      </th>
+      <th>{{card_type}}</th>
+      <th>{{status}}</th>
+    </tr>
+    {% endfor %}
+    <tr>
+      <th>
+        <input type="submit" name="" value="Label and Crop">
+      </th>
+    </tr>
+  </form>
+</table>

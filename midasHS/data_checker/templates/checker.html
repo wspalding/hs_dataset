@@ -1,0 +1,33 @@
+<style media="screen">
+  table, th, tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+<a href="/data_checker/collect">collect new cards</a>
+<table>
+  <tr>
+    <th>index</th>
+    <th>name</th>
+    <th>normal status</th>
+    <th>golden status</th>
+    <th><a href="/data_checker/download_normal_cards">download normal</a></th>
+    <th><a href="/data_checker/download_golden_cards">download golden</a></th>
+  </tr>
+
+  {% for index, name, normal_status, golden_status, img_url, golden_url in data %}
+  <tr>
+    <th><a href="/data_checker/{{index}}">{{index}}</a></th>
+    <th><a href="/data_checker/{{index}}">{{name}}</a></th>
+    <th>{{normal_status}}</th>
+    <th>{{golden_status}}</th>
+    <th><a href="{{img_url}}">image url</a></th>
+    <th><a href="{{golden_url}}">golden url</a></th>
+  </tr>
+  {% endfor %}
+</table>
+
+  <!-- <p>
+    <a href="/data_checker/{{i}}">{{i}} {{r}} </a>
+    {{s}}
+  </p> -->
